@@ -3,21 +3,21 @@
 > A powerful, SQL-like array filtering library for TypeScript and JavaScript with advanced pattern matching, MongoDB-style operators, deep object comparison, and zero dependencies.
 
 <p>
-  <a aria-label="NPM version" href="https://www.npmjs.com/package/@mcabreradev/filter">
-    <img alt="" src="https://img.shields.io/npm/v/@mcabreradev/filter.svg?style=for-the-badge&labelColor=0869B8">
+  <a aria-label="NPM version" href="https://www.npmjs.com/package/@dataforge/filter">
+    <img alt="" src="https://img.shields.io/npm/v/@dataforge/filter.svg?style=for-the-badge&labelColor=0869B8">
   </a>
   <a aria-label="License" href="https://github.com/mcabreradev/filter/blob/main/LICENSE.md">
-    <img alt="" src="https://img.shields.io/npm/l/@mcabreradev/filter.svg?style=for-the-badge&labelColor=579805">
+    <img alt="" src="https://img.shields.io/npm/l/@dataforge/filter.svg?style=for-the-badge&labelColor=579805">
   </a>
-  <a aria-label="Bundle Size" href="https://bundlephobia.com/package/@mcabreradev/filter">
-    <img alt="" src="https://img.shields.io/bundlephobia/minzip/@mcabreradev/filter?style=for-the-badge&labelColor=orange">
+  <a aria-label="Bundle Size" href="https://bundlephobia.com/package/@dataforge/filter">
+    <img alt="" src="https://img.shields.io/bundlephobia/minzip/@dataforge/filter?style=for-the-badge&labelColor=orange">
   </a>
   <a aria-label="TypeScript" href="#">
     <img alt="" src="https://img.shields.io/badge/TypeScript-Ready-blue.svg?style=for-the-badge&labelColor=blue">
   </a>
 </p>
 
-## Why @mcabreradev/filter?
+## Why @dataforge/filter?
 
 Go beyond JavaScript's native `Array.filter()` with a library that understands your data:
 
@@ -36,13 +36,13 @@ Go beyond JavaScript's native `Array.filter()` with a library that understands y
 
 ```bash
 # Using npm
-npm install @mcabreradev/filter
+npm install @dataforge/filter
 
 # Using yarn
-yarn add @mcabreradev/filter
+yarn add @dataforge/filter
 
 # Using pnpm
-pnpm add @mcabreradev/filter
+pnpm add @dataforge/filter
 ```
 
 **Requirements:** Node.js >= 20, TypeScript 5.0+ (optional)
@@ -52,7 +52,7 @@ pnpm add @mcabreradev/filter
 ## Quick Start
 
 ```typescript
-import { filter } from '@mcabreradev/filter';
+import { filter } from '@dataforge/filter';
 
 const users = [
   { name: 'Alice', email: 'alice@example.com', age: 30, city: 'Berlin' },
@@ -272,7 +272,7 @@ filter<Product>(products, (p: Product): boolean =>
 Customize filter behavior with options:
 
 ```typescript
-import { filter } from '@mcabreradev/filter';
+import { filter } from '@dataforge/filter';
 
 // Case-sensitive matching
 filter(users, 'ALICE', { caseSensitive: true });
@@ -303,12 +303,12 @@ filter(data, expression, {
 Full TypeScript support with strict typing:
 
 ```typescript
-import { filter } from '@mcabreradev/filter';
+import { filter } from '@dataforge/filter';
 import type {
   Expression,
   FilterOptions,
   ComparisonOperators
-} from '@mcabreradev/filter';
+} from '@dataforge/filter';
 
 interface Product {
   id: number;

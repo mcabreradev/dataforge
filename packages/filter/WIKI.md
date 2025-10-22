@@ -1,14 +1,14 @@
-# @mcabreradev/filter - Complete Documentation Wiki
+# @dataforge/filter - Complete Documentation Wiki
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@mcabreradev/filter">
-    <img alt="NPM version" src="https://img.shields.io/npm/v/@mcabreradev/filter.svg?style=for-the-badge&labelColor=0869B8">
+  <a href="https://www.npmjs.com/package/@dataforge/filter">
+    <img alt="NPM version" src="https://img.shields.io/npm/v/@dataforge/filter.svg?style=for-the-badge&labelColor=0869B8">
   </a>
   <a href="https://github.com/mcabreradev/filter/blob/main/LICENSE.md">
-    <img alt="License" src="https://img.shields.io/npm/l/@mcabreradev/filter.svg?style=for-the-badge&labelColor=579805">
+    <img alt="License" src="https://img.shields.io/npm/l/@dataforge/filter.svg?style=for-the-badge&labelColor=579805">
   </a>
-  <a href="https://bundlephobia.com/package/@mcabreradev/filter">
-    <img alt="Bundle Size" src="https://img.shields.io/bundlephobia/minzip/@mcabreradev/filter?style=for-the-badge&labelColor=orange">
+  <a href="https://bundlephobia.com/package/@dataforge/filter">
+    <img alt="Bundle Size" src="https://img.shields.io/bundlephobia/minzip/@dataforge/filter?style=for-the-badge&labelColor=orange">
   </a>
   <a href="#">
     <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-blue.svg?style=for-the-badge&labelColor=blue">
@@ -67,7 +67,7 @@
 
 ## Introduction
 
-`@mcabreradev/filter` is a powerful filtering library that goes far beyond JavaScript's native `Array.filter()`. It provides multiple filtering strategies including string patterns, wildcards, object matching, predicates, and MongoDB-style operators.
+`@dataforge/filter` is a powerful filtering library that goes far beyond JavaScript's native `Array.filter()`. It provides multiple filtering strategies including string patterns, wildcards, object matching, predicates, and MongoDB-style operators.
 
 ### Key Features
 
@@ -101,13 +101,13 @@ Choose your preferred package manager:
 
 ```bash
 # Using npm
-npm install @mcabreradev/filter
+npm install @dataforge/filter
 
 # Using yarn
-yarn add @mcabreradev/filter
+yarn add @dataforge/filter
 
 # Using pnpm
-pnpm add @mcabreradev/filter
+pnpm add @dataforge/filter
 ```
 
 ### TypeScript Configuration
@@ -132,25 +132,25 @@ The library is built with TypeScript and requires **Node.js >= 20**. For optimal
 #### ES Modules (Recommended)
 
 ```typescript
-import { filter } from '@mcabreradev/filter';
+import { filter } from '@dataforge/filter';
 
 // With types
-import type { Expression, FilterOptions } from '@mcabreradev/filter';
+import type { Expression, FilterOptions } from '@dataforge/filter';
 ```
 
 #### CommonJS
 
 ```javascript
-const { filter } = require('@mcabreradev/filter');
+const { filter } = require('@dataforge/filter');
 
 // In TypeScript
-import filter = require('@mcabreradev/filter');
+import filter = require('@dataforge/filter');
 ```
 
 #### Default Import
 
 ```typescript
-import filter from '@mcabreradev/filter';
+import filter from '@dataforge/filter';
 ```
 
 [↑ Back to top](#table-of-contents)
@@ -162,7 +162,7 @@ import filter from '@mcabreradev/filter';
 Get started with the most common use cases:
 
 ```typescript
-import { filter } from '@mcabreradev/filter';
+import { filter } from '@dataforge/filter';
 
 const users = [
   { name: 'Alice', age: 30, city: 'Berlin', role: 'admin' },
@@ -1266,7 +1266,7 @@ import type {
   ArrayOperators,
   StringOperators,
   OperatorExpression
-} from '@mcabreradev/filter';
+} from '@dataforge/filter';
 ```
 
 ### Generic Type Parameter
@@ -1914,7 +1914,7 @@ filter(data, expression, {
 });
 
 // ✅ v5.0.0: Runtime validation
-import { validateExpression, validateOptions } from '@mcabreradev/filter';
+import { validateExpression, validateOptions } from '@dataforge/filter';
 ```
 
 **Recommended Updates:**
@@ -1943,7 +1943,7 @@ filter(products, {
 // Native filter
 const adults = users.filter(u => u.age >= 18);
 
-// @mcabreradev/filter equivalent
+// @dataforge/filter equivalent
 const adults = filter(users, (u) => u.age >= 18);
 // OR better with operators:
 const adults = filter(users, { age: { $gte: 18 } });
@@ -1955,7 +1955,7 @@ const results = users.filter(u =>
   u.isActive
 );
 
-// @mcabreradev/filter
+// @dataforge/filter
 const results = filter(users, {
   age: { $gte: 18 },
   city: 'Berlin',
@@ -1971,7 +1971,7 @@ const results = users.filter(u =>
   u.email.includes('gmail.com')
 );
 
-// ✅ @mcabreradev/filter
+// ✅ @dataforge/filter
 const results = filter(users, {
   email: { $endsWith: 'gmail.com' }
 });
@@ -1983,7 +1983,7 @@ const results = users.filter(u =>
   u.name.toLowerCase().startsWith('al')
 );
 
-// ✅ @mcabreradev/filter
+// ✅ @dataforge/filter
 const results = filter(users, {
   name: { $startsWith: 'Al' }
 });
@@ -2016,7 +2016,7 @@ Runtime validation with Zod.
 ### Expression Validation
 
 ```typescript
-import { validateExpression } from '@mcabreradev/filter';
+import { validateExpression } from '@dataforge/filter';
 
 // Valid expressions
 validateExpression('string');          // ✅ Valid
@@ -2042,7 +2042,7 @@ try {
 ### Options Validation
 
 ```typescript
-import { validateOptions } from '@mcabreradev/filter';
+import { validateOptions } from '@dataforge/filter';
 
 // Valid options
 validateOptions({ caseSensitive: true });  // ✅ Valid
@@ -2106,7 +2106,7 @@ filter(users, 'berlin', { caseSensitive: false }); // Default
 
 ```typescript
 // 1. Validate before filtering
-import { validateExpression, validateOptions } from '@mcabreradev/filter';
+import { validateExpression, validateOptions } from '@dataforge/filter';
 
 try {
   validateExpression(expression);
@@ -2333,7 +2333,7 @@ Best practices for testing filter logic.
 
 ```typescript
 import { describe, it, expect } from 'vitest'; // or 'jest'
-import { filter } from '@mcabreradev/filter';
+import { filter } from '@dataforge/filter';
 
 describe('User Filtering', () => {
   const users = [
@@ -2573,7 +2573,7 @@ const step2 = filter(step1, { price: { $lte: 1000 } });
 console.log('After price filter:', step2.length);
 
 // 2. Test expression validity
-import { validateExpression } from '@mcabreradev/filter';
+import { validateExpression } from '@dataforge/filter';
 validateExpression(myExpression);
 
 // 3. Log results
@@ -2682,7 +2682,7 @@ if (expression !== undefined && expression !== null) {
 }
 
 // ✅ Validate first
-import { validateExpression } from '@mcabreradev/filter';
+import { validateExpression } from '@dataforge/filter';
 try {
   validateExpression(expression);
   filter(data, expression);
@@ -2799,7 +2799,7 @@ filter(products, {
 });
 
 // ✅ Check TypeScript types
-import type { ComparisonOperators } from '@mcabreradev/filter';
+import type { ComparisonOperators } from '@dataforge/filter';
 const priceFilter: ComparisonOperators = { $gt: 100 };
 filter(products, { price: priceFilter });
 ```
