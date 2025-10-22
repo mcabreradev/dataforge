@@ -6,7 +6,7 @@
   <a aria-label="NPM version" href="https://www.npmjs.com/package/@dataforge/filter">
     <img alt="" src="https://img.shields.io/npm/v/@dataforge/filter.svg?style=for-the-badge&labelColor=0869B8">
   </a>
-  <a aria-label="License" href="https://github.com/mcabreradev/filter/blob/main/LICENSE.md">
+  <a aria-label="License" href="https://github.com/mcabreradev/dataforge/blob/main/LICENSE.md">
     <img alt="" src="https://img.shields.io/npm/l/@dataforge/filter.svg?style=for-the-badge&labelColor=579805">
   </a>
   <a aria-label="Bundle Size" href="https://bundlephobia.com/package/@dataforge/filter">
@@ -411,7 +411,6 @@ For performance optimization tips, see [Performance Guide in WIKI](./WIKI.md#per
 
 - **[WIKI.md](./WIKI.md)** - Complete documentation with 150+ examples, API reference, TypeScript guide, real-world use cases, FAQ, and troubleshooting
 - **[OPERATORS.md](./OPERATORS.md)** - Detailed guide for all 13 MongoDB-style operators with examples
-- **[MIGRATION.md](./MIGRATION.md)** - Migration guide from v3.x or native Array.filter()
 - **[Examples](./examples/)** - Real-world usage examples and code samples
 
 ### 🎯 Quick Links
@@ -427,23 +426,7 @@ For performance optimization tips, see [Performance Guide in WIKI](./WIKI.md#per
 
 ---
 
-## Migration from v3.x
-
-**Good news:** v5.0.0 is **100% backward compatible**! All v3.x code continues to work.
-
-```typescript
-// ✅ All v3.x syntax still works
-filter(data, 'string');
-filter(data, { prop: 'value' });
-filter(data, (item) => true);
-filter(data, '%pattern%');
-
-// ✅ New in v5.0.0
-filter(data, { age: { $gte: 18 } });
-filter(data, expression, { caseSensitive: true });
-```
-
-**What's New in v5.0.0:**
+**What's New:**
 - 13 MongoDB-style operators
 - Configuration API
 - Runtime validation with Zod
@@ -489,7 +472,7 @@ Works in all modern browsers and Node.js:
 We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 **Ways to Contribute:**
-- Report bugs or request features via [GitHub Issues](https://github.com/mcabreradev/filter/issues)
+- Report bugs or request features via [GitHub Issues](https://github.com/mcabreradev/dataforge/issues)
 - Submit pull requests with bug fixes or new features
 - Improve documentation
 - Share your use cases and examples
@@ -518,15 +501,6 @@ The library has 240+ tests with comprehensive coverage of all features.
 
 ## Changelog
 
-### v5.0.0 (Latest)
-- ✨ Added 13 MongoDB-style operators
-- ⚙️ Configuration API with 4 options
-- ✅ Runtime validation with Zod
-- 🚀 Performance optimizations
-- 📘 Enhanced TypeScript support
-- 🧪 240+ tests
-
-See [MIGRATION.md](./MIGRATION.md) for detailed changelog and migration guide.
 
 ---
 
@@ -541,7 +515,7 @@ Copyright (c) 2025 Miguelangel Cabrera
 ## Credits
 
 **Author:** [Miguelangel Cabrera](https://github.com/mcabreradev)
-**Repository:** [github.com/mcabreradev/filter](https://github.com/mcabreradev/filter)
+**Repository:** [github.com/mcabreradev/dataforge](https://github.com/mcabreradev/dataforge)
 
 Inspired by MongoDB query syntax, SQL wildcards, and functional programming patterns.
 
@@ -550,9 +524,9 @@ Inspired by MongoDB query syntax, SQL wildcards, and functional programming patt
 ## Support
 
 - 📖 [Complete Documentation (WIKI)](./WIKI.md)
-- 💬 [GitHub Discussions](https://github.com/mcabreradev/filter/discussions)
-- 🐛 [Issue Tracker](https://github.com/mcabreradev/filter/issues)
-- ⭐ [Star on GitHub](https://github.com/mcabreradev/filter)
+- 💬 [GitHub Discussions](https://github.com/mcabreradev/dataforge/discussions)
+- 🐛 [Issue Tracker](https://github.com/mcabreradev/dataforge/issues)
+- ⭐ [Star on GitHub](https://github.com/mcabreradev/dataforge)
 
 ---
 
