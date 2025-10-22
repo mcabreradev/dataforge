@@ -14,11 +14,6 @@ Modern TypeScript utilities and components monorepo with state-of-the-art toolin
 # Install core utilities
 npm install @dataforge/core
 
-# Install utility functions
-npm install @dataforge/utils
-
-# Install validation utilities
-npm install @dataforge/validation
 ```
 
 ## 📚 Packages
@@ -26,8 +21,6 @@ npm install @dataforge/validation
 | Package | Description | Size |
 |---------|-------------|------|
 | [@dataforge/core](./packages/core) | Core utilities and types (Result, Option, Either) | ~2KB |
-| [@dataforge/utils](./packages/utils) | Utility functions for common operations | ~8KB |
-| [@dataforge/validation](./packages/validation) | Schema validation and form validation | ~5KB |
 
 ## ✨ Features
 
@@ -95,9 +88,7 @@ pnpm semantic-release:beta     # Release beta version
 ```
 dataforge/
 ├── packages/
-│   ├── core/           # Core utilities and types
-│   ├── utils/          # Utility functions
-│   └── validation/     # Schema validation
+│   └── core/           # Core utilities and types
 ├── docs/               # VitePress documentation
 ├── .github/
 │   ├── workflows/      # CI/CD workflows
