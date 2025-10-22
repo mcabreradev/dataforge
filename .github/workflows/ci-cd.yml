@@ -87,9 +87,6 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Test coverage
-        run: pnpm test:coverage
-
       - name: Size limit
         run: pnpm size
 
