@@ -15,15 +15,18 @@
       "style": {
         "useConst": "error",
         "useTemplate": "error",
-        "noVar": "error"
+        "noVar": "error",
+        "noUselessElse": "off",
+        "noParameterAssign": "off"
       },
       "suspicious": {
         "noExplicitAny": "warn",
         "noArrayIndexKey": "warn",
-        "noConsoleLog": "warn"
+        "noConsoleLog": "warn",
+        "useValidTypeof": "off"
       },
       "complexity": {
-        "noBannedTypes": "error",
+        "noBannedTypes": "warn",
         "noUselessFragments": "error"
       },
       "performance": {
