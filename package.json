@@ -1,0 +1,84 @@
+{
+  "name": "@dataforge",
+  "version": "1.0.0",
+  "description": "Modern TypeScript utilities and components monorepo",
+  "author": "Miguelángel Cabrera <mcabrera.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mcabreradev/dataforge.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "build": "turbo run build",
+    "build:watch": "turbo run build:watch",
+    "build:clean": "turbo run build:clean",
+    "test": "turbo run test",
+    "test:ui": "vitest --ui",
+    "test:coverage": "turbo run test:coverage",
+    "test:run": "vitest run",
+    "typecheck": "turbo run typecheck",
+    "typecheck:watch": "turbo run typecheck:watch",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
+    "clean": "turbo run clean",
+    "size": "size-limit",
+    "semantic-release": "semantic-release",
+    "semantic-release:dry-run": "semantic-release --dry-run",
+    "semantic-release:beta": "semantic-release --branches beta",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.4.0",
+    "@commitlint/cli": "^18.4.0",
+    "@commitlint/config-conventional": "^18.4.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.4",
+    "@size-limit/preset-small-lib": "^11.0.0",
+    "@types/node": "^20.10.0",
+    "@vitest/ui": "^1.0.0",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "happy-dom": "^12.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.0",
+    "semantic-release": "^21.1.1",
+    "size-limit": "^11.0.0",
+    "turbo": "^1.10.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "biome lint --write",
+      "biome format --write"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "packages/core/dist/index.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "packages/utils/dist/index.js",
+      "limit": "25 KB"
+    },
+    {
+      "path": "packages/validation/dist/index.js",
+      "limit": "15 KB"
+    }
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "@dataforge/core",
+    "path": "packages/core/dist/index.js",
+    "limit": "10 KB"
+  },
+  {
+    "name": "@dataforge/utils",
+    "path": "packages/utils/dist/index.js",
+    "limit": "25 KB"
+  },
+  {
+    "name": "@dataforge/validation",
+    "path": "packages/validation/dist/index.js",
+    "limit": "15 KB"
+  }
+]

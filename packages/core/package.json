@@ -1,0 +1,65 @@
+{
+  "name": "@dataforge/core",
+  "version": "0.1.0",
+  "description": "Core utilities and types for DataForge ecosystem",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "build:clean": "rimraf dist",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format .",
+    "format:check": "biome format --check ."
+  },
+  "keywords": [
+    "dataforge",
+    "core",
+    "utilities",
+    "types",
+    "result",
+    "option",
+    "either"
+  ],
+  "author": "Miguelángel Cabrera <mcabrera.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcabreradev/dataforge.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/mcabreradev/dataforge/issues"
+  },
+  "homepage": "https://github.com/mcabreradev/dataforge#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  }
+}
