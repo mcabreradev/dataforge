@@ -27,7 +27,7 @@ Go beyond JavaScript's native `Array.filter()` with a library that understands y
 - **🔒 Type-Safe** - Built with strict TypeScript for maximum reliability
 - **🎨 Multiple Strategies** - String patterns, objects, predicates, operators, or custom comparators
 - **🚀 Performance Optimized** - Optional caching and regex compilation optimization
-- **📦 MongoDB-Style Operators** - 13 operators for advanced filtering (v5.0.0+)
+- **📦 MongoDB-Style Operators** - 13 operators for advanced filtering (v0.0.1+)
 - **🧪 Battle-Tested** - 240+ tests ensuring reliability
 
 ---
@@ -80,7 +80,7 @@ filter(users, '!London');
 filter(users, (user) => user.age > 28);
 // → Returns Alice and Charlie
 
-// v5.0.0: MongoDB-style operators
+// v0.0.1: MongoDB-style operators
 filter(users, { age: { $gte: 25, $lt: 35 } });
 // → Returns Bob and Alice
 
@@ -157,7 +157,7 @@ filter(users, {
 });
 ```
 
-### MongoDB-Style Operators (v5.0.0)
+### MongoDB-Style Operators (v0.0.1)
 
 Powerful operators for advanced filtering:
 
