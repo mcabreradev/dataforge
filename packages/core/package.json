@@ -14,10 +14,7 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
+  "files": ["dist", "README.md"],
   "scripts": {
     "build": "tsup",
     "build:watch": "tsup --watch",
@@ -30,17 +27,9 @@
     "lint": "biome lint .",
     "lint:fix": "biome lint --write .",
     "format": "biome format .",
-    "format:check": "biome format --check ."
+    "format:check": "biome check --formatter-enabled=true ."
   },
-  "keywords": [
-    "dataforge",
-    "core",
-    "utilities",
-    "types",
-    "result",
-    "option",
-    "either"
-  ],
+  "keywords": ["dataforge", "core", "utilities", "types", "result", "option", "either"],
   "author": "Miguelángel Cabrera <mcabrera.dev@gmail.com>",
   "license": "MIT",
   "repository": {
