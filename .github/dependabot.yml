@@ -17,9 +17,9 @@ updates:
       - "dependencies"
       - "security"
 
-  # Core package
+  # Filter package
   - package-ecosystem: "npm"
-    directory: "/packages/core"
+    directory: "/packages/filter"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -28,11 +28,14 @@ updates:
     assignees:
       - "mcabreradev"
     commit-message:
-      prefix: "chore(core)"
+      prefix: "chore(filter)"
       include: "scope"
     labels:
       - "dependencies"
-      - "core"
+      - "filter"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   # GitHub Actions
   - package-ecosystem: "github-actions"

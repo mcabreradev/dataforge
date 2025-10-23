@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main, develop, beta]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop]
 
@@ -11,12 +11,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Job para detectar cambios en paquetes
-  changes:
+  test:
     runs-on: ubuntu-latest
-    outputs:
-      packages: ${{ steps.changes.outputs.packages }}
-      has-changes: ${{ steps.changes.outputs.has-changes }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -56,19 +53,6 @@ jobs:
           node-version: '22'
           cache: 'pnpm'
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -85,4 +69,4 @@ jobs:
         run: pnpm build
 
       - name: Run tests
-        run: pnpm test
+        run: pnpm test:run
