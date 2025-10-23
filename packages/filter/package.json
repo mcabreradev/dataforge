@@ -1,0 +1,119 @@
+{
+  "name": "@dataforge/filter",
+  "version": "0.0.1",
+  "description": "A powerful, SQL-like array filtering library for TypeScript and JavaScript with advanced pattern matching, MongoDB-style operators, deep object comparison, and zero dependencies",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "build:clean": "rimraf dist",
+    "dev": "tsup --watch",
+    "prebuild": "pnpm run build:clean",
+    "prepack": "pnpm run build",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:watch": "vitest --watch",
+    "test:run": "vitest run",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\"",
+    "check": "pnpm run typecheck && pnpm run lint && pnpm run test:run",
+    "check:watch": "pnpm run typecheck:watch",
+    "clean": "pnpm run build:clean",
+    "validate": "pnpm run check && pnpm run build",
+    "prepare": "husky",
+    "prepublish": "pnpm run lint && pnpm run typecheck",
+    "version": "pnpm run format && git add -A src",
+    "publish:major": "pnpm version major && pnpm publish",
+    "publish:minor": "pnpm version minor && pnpm publish",
+    "publish:patch": "pnpm version patch && pnpm publish",
+    "release": "git push origin --tags",
+    "release:major": "pnpm run publish:major && pnpm run release",
+    "release:minor": "pnpm run publish:minor && pnpm run release",
+    "release:patch": "pnpm run publish:patch && pnpm run release",
+    "doctoc": "doctoc --title='## Table of Contents' --github README.md"
+  },
+  "keywords": [
+    "filter",
+    "node",
+    "typescript",
+    "search",
+    "react",
+    "nextjs",
+    "array",
+    "object",
+    "nodejs",
+    "javascript",
+    "front-end",
+    "es6",
+    "frontend",
+    "backend",
+    "arrow-functions",
+    "back-end",
+    "arrays",
+    "toolset",
+    "node-js",
+    "next-js",
+    "next",
+    "array-methods",
+    "mongodb",
+    "sql",
+    "pattern-matching",
+    "object-comparison",
+    "zero-dependencies",
+    "typescript",
+    "javascript",
+    "nodejs",
+    "react",
+    "nextjs",
+    "reactjs"
+  ],
+  "author": "Miguelángel Cabrera <mcabrera.dev@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcabreradev/dataforge.git",
+    "directory": "packages/filter"
+  },
+  "bugs": {
+    "url": "https://github.com/mcabreradev/dataforge/issues"
+  },
+  "homepage": "https://github.com/mcabreradev/dataforge#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "@vitest/ui": "^2.1.0",
+    "doctoc": "^2.2.1",
+    "rimraf": "^5.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

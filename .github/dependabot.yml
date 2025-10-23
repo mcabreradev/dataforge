@@ -16,15 +16,6 @@ updates:
     labels:
       - "dependencies"
       - "security"
-    ignore:
-      # Allow critical security updates but ignore other major updates
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
-        # Exception: Allow major updates for security-critical packages
-      - dependency-name: "semver"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "minimatch"
-        update-types: ["version-update:semver-major"]
 
   # Filter package
   - package-ecosystem: "npm"
@@ -62,9 +53,3 @@ updates:
     labels:
       - "dependencies"
       - "ci"
-    ignore:
-      # Pin critical actions to specific versions
-      - dependency-name: "actions/checkout"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "actions/setup-node"
-        update-types: ["version-update:semver-major"]

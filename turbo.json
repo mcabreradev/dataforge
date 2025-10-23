@@ -6,6 +6,9 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "build:docs": {
+      "outputs": ["docs/.vitepress/dist/**"]
+    },
     "build:watch": {
       "cache": false,
       "persistent": true
@@ -22,6 +25,9 @@
       "outputs": []
     },
     "format": {
+      "outputs": []
+    },
+    "format:check": {
       "outputs": []
     },
     "typecheck": {
