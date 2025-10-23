@@ -63,8 +63,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
-      "biome lint --write",
-      "biome format --write"
+      "biome lint --write --files-ignore-unknown=true --no-errors-on-unmatched",
+      "biome format --write --files-ignore-unknown=true --no-errors-on-unmatched"
     ]
   },
   "size-limit": [

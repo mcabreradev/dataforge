@@ -58,7 +58,8 @@
       "coverage/**",
       ".git/**",
       "*.d.ts",
-      "docs/.vitepress/dist/**"
+      "docs/**",
+      ".vitepress/**"
     ]
   }
 }
