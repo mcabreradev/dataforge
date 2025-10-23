@@ -1,0 +1,8 @@
+dist/
+node_modules/
+packages/**/examples/
+coverage/
+.git/
+*.d.ts
+docs/
+.vitepress/
