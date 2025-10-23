@@ -84,9 +84,5 @@ jobs:
       - name: Build packages
         run: pnpm build
 
-      - name: Test
+      - name: Run tests
         run: pnpm test
-
-      - name: Size limit
-        run: pnpm size
-

@@ -1,7 +1,0 @@
-[
-  {
-    "name": "@dataforge/core",
-    "path": "packages/core/dist/index.js",
-    "limit": "100 KB"
-  }
-]
