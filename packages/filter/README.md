@@ -57,7 +57,7 @@ import { filter } from '@dataforge/filter';
 const users = [
   { name: 'Alice', email: 'alice@example.com', age: 30, city: 'Berlin' },
   { name: 'Bob', email: 'bob@example.com', age: 25, city: 'London' },
-  { name: 'Charlie', email: 'charlie@example.com', age: 35, city: 'Berlin' }
+  { name: 'Charlie', email: 'charlie@example.com', age: 35, city: 'Berlin' },
 ];
 
 // Simple string matching (case-insensitive by default)
@@ -103,17 +103,17 @@ Filter by simple values across all object properties:
 const products = [
   { id: 1, name: 'Laptop', price: 1200 },
   { id: 2, name: 'Mouse', price: 25 },
-  { id: 3, name: 'Monitor', price: 450 }
+  { id: 3, name: 'Monitor', price: 450 },
 ];
 
 // String search
-filter(products, 'Laptop');  // → [{ id: 1, ... }]
+filter(products, 'Laptop'); // → [{ id: 1, ... }]
 
 // Number search
-filter(products, 25);  // → [{ id: 2, ... }]
+filter(products, 25); // → [{ id: 2, ... }]
 
 // Boolean search
-filter(tasks, true);  // Finds all completed tasks
+filter(tasks, true); // Finds all completed tasks
 ```
 
 ### Wildcard Patterns
@@ -122,17 +122,17 @@ SQL-like wildcards for flexible matching:
 
 ```typescript
 // % matches zero or more characters
-filter(users, '%alice%');     // Contains 'alice'
-filter(users, 'Al%');          // Starts with 'Al'
-filter(users, '%son');         // Ends with 'son'
+filter(users, '%alice%'); // Contains 'alice'
+filter(users, 'Al%'); // Starts with 'Al'
+filter(users, '%son'); // Ends with 'son'
 
 // _ matches exactly one character
-filter(codes, 'A_');           // 'A1', 'A2', but not 'AB1'
-filter(ids, 'user-10_');       // 'user-101', 'user-102'
+filter(codes, 'A_'); // 'A1', 'A2', but not 'AB1'
+filter(ids, 'user-10_'); // 'user-101', 'user-102'
 
 // Negation with !
-filter(users, '!admin');       // Exclude admin
-filter(files, '!%.pdf');       // Exclude PDFs
+filter(users, '!admin'); // Exclude admin
+filter(files, '!%.pdf'); // Exclude PDFs
 ```
 
 ### Object-Based Filtering
@@ -147,13 +147,13 @@ filter(products, { category: 'Electronics' });
 filter(products, {
   category: 'Electronics',
   price: 1200,
-  inStock: true
+  inStock: true,
 });
 
 // Nested objects
 filter(users, {
   address: { city: 'Berlin' },
-  settings: { theme: 'dark' }
+  settings: { theme: 'dark' },
 });
 ```
 
@@ -170,15 +170,15 @@ filter(products, { price: { $lte: 500 } });
 
 // Range queries
 filter(products, {
-  price: { $gte: 100, $lte: 500 }
+  price: { $gte: 100, $lte: 500 },
 });
 
 // Date ranges
 filter(orders, {
   date: {
     $gte: new Date('2025-01-01'),
-    $lte: new Date('2025-12-31')
-  }
+    $lte: new Date('2025-12-31'),
+  },
 });
 
 // Not equal
@@ -192,21 +192,21 @@ filter(users, { role: { $ne: 'guest' } });
 ```typescript
 // In / Not in array
 filter(products, {
-  category: { $in: ['Electronics', 'Books'] }
+  category: { $in: ['Electronics', 'Books'] },
 });
 
 filter(products, {
-  status: { $nin: ['archived', 'deleted'] }
+  status: { $nin: ['archived', 'deleted'] },
 });
 
 // Array contains value
 filter(products, {
-  tags: { $contains: 'sale' }
+  tags: { $contains: 'sale' },
 });
 
 // Array size
 filter(products, {
-  images: { $size: 3 }
+  images: { $size: 3 },
 });
 ```
 
@@ -217,16 +217,16 @@ filter(products, {
 ```typescript
 // Starts with / Ends with
 filter(users, {
-  email: { $endsWith: '@company.com' }
+  email: { $endsWith: '@company.com' },
 });
 
 filter(files, {
-  name: { $startsWith: 'report-' }
+  name: { $startsWith: 'report-' },
 });
 
 // Contains substring
 filter(articles, {
-  title: { $contains: 'typescript' }
+  title: { $contains: 'typescript' },
 });
 ```
 
@@ -240,7 +240,7 @@ filter(products, {
   price: { $gte: 100, $lte: 500 },
   category: { $in: ['Electronics', 'Accessories'] },
   name: { $startsWith: 'Pro' },
-  inStock: { $eq: true }
+  inStock: { $eq: true },
 });
 ```
 
@@ -253,16 +253,10 @@ For complex custom logic:
 filter(numbers, (n) => n > 5);
 
 // Complex conditions
-filter(products, (product) =>
-  product.price < 100 &&
-  product.inStock &&
-  product.rating >= 4.0
-);
+filter(products, (product) => product.price < 100 && product.inStock && product.rating >= 4.0);
 
 // Type-safe with TypeScript
-filter<Product>(products, (p: Product): boolean =>
-  p.price > 100 && p.name.includes('Pro')
-);
+filter<Product>(products, (p: Product): boolean => p.price > 100 && p.name.includes('Pro'));
 ```
 
 ---
@@ -285,7 +279,7 @@ filter(largeDataset, expression, { enableCache: true });
 
 // Custom comparison logic
 filter(data, expression, {
-  customComparator: (actual, expected) => actual === expected
+  customComparator: (actual, expected) => actual === expected,
 });
 ```
 
@@ -427,6 +421,7 @@ For performance optimization tips, see [Performance Guide in WIKI](./WIKI.md#per
 ---
 
 **What's New:**
+
 - 13 MongoDB-style operators
 - Configuration API
 - Runtime validation with Zod
@@ -472,6 +467,7 @@ Works in all modern browsers and Node.js:
 We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
 **Ways to Contribute:**
+
 - Report bugs or request features via [GitHub Issues](https://github.com/mcabreradev/dataforge/issues)
 - Submit pull requests with bug fixes or new features
 - Improve documentation
@@ -500,7 +496,6 @@ The library has 240+ tests with comprehensive coverage of all features.
 ---
 
 ## Changelog
-
 
 ---
 

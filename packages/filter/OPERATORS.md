@@ -22,7 +22,7 @@ import { filter } from '@dataforge/filter';
 const products = [
   { name: 'Laptop', price: 1200 },
   { name: 'Mouse', price: 25 },
-  { name: 'Monitor', price: 450 }
+  { name: 'Monitor', price: 450 },
 ];
 
 filter(products, { price: { $gt: 100 } });
@@ -82,14 +82,14 @@ All comparison operators work with dates:
 const orders = [
   { id: 1, date: new Date('2025-01-15') },
   { id: 2, date: new Date('2025-02-20') },
-  { id: 3, date: new Date('2025-03-10') }
+  { id: 3, date: new Date('2025-03-10') },
 ];
 
 filter(orders, {
   date: {
     $gte: new Date('2025-02-01'),
-    $lte: new Date('2025-03-31')
-  }
+    $lte: new Date('2025-03-31'),
+  },
 });
 // → Returns: orders 2 and 3
 ```
@@ -100,7 +100,7 @@ Combine `$gte` and `$lte` (or `$gt` and `$lt`) to create range queries:
 
 ```typescript
 filter(products, {
-  price: { $gte: 100, $lte: 500 }
+  price: { $gte: 100, $lte: 500 },
 });
 // → Returns products with price between $100 and $500 (inclusive)
 ```
@@ -115,11 +115,11 @@ Returns items where the property value is **in** the specified array.
 const products = [
   { id: 1, category: 'Electronics' },
   { id: 2, category: 'Furniture' },
-  { id: 3, category: 'Books' }
+  { id: 3, category: 'Books' },
 ];
 
 filter(products, {
-  category: { $in: ['Electronics', 'Books'] }
+  category: { $in: ['Electronics', 'Books'] },
 });
 // → Returns: products 1 and 3
 ```
@@ -130,7 +130,7 @@ Returns items where the property value is **not in** the specified array.
 
 ```typescript
 filter(products, {
-  category: { $nin: ['Furniture'] }
+  category: { $nin: ['Furniture'] },
 });
 // → Returns: products 1 and 3
 ```
@@ -143,11 +143,11 @@ Returns items where the array property **contains** the specified value.
 const products = [
   { name: 'Laptop', tags: ['computer', 'portable'] },
   { name: 'Mouse', tags: ['computer', 'accessory'] },
-  { name: 'Desk', tags: ['office', 'large'] }
+  { name: 'Desk', tags: ['office', 'large'] },
 ];
 
 filter(products, {
-  tags: { $contains: 'computer' }
+  tags: { $contains: 'computer' },
 });
 // → Returns: Laptop and Mouse
 ```
@@ -158,7 +158,7 @@ Returns items where the array property has the **specified length**.
 
 ```typescript
 filter(products, {
-  tags: { $size: 2 }
+  tags: { $size: 2 },
 });
 // → Returns all products (all have exactly 2 tags)
 ```
@@ -172,14 +172,10 @@ All string operators respect the `caseSensitive` configuration option (defaults 
 Returns items where the string property **starts with** the specified value.
 
 ```typescript
-const users = [
-  { name: 'Alice' },
-  { name: 'Bob' },
-  { name: 'Alex' }
-];
+const users = [{ name: 'Alice' }, { name: 'Bob' }, { name: 'Alex' }];
 
 filter(users, {
-  name: { $startsWith: 'Al' }
+  name: { $startsWith: 'Al' },
 });
 // → Returns: Alice and Alex
 ```
@@ -190,7 +186,7 @@ Returns items where the string property **ends with** the specified value.
 
 ```typescript
 filter(users, {
-  name: { $endsWith: 'ce' }
+  name: { $endsWith: 'ce' },
 });
 // → Returns: Alice
 ```
@@ -201,7 +197,7 @@ Returns items where the string property **contains** the specified substring.
 
 ```typescript
 filter(users, {
-  name: { $contains: 'li' }
+  name: { $contains: 'li' },
 });
 // → Returns: Alice
 ```
@@ -229,8 +225,8 @@ filter(products, {
   price: {
     $gte: 100,
     $lte: 500,
-    $ne: 300
-  }
+    $ne: 300,
+  },
 });
 // → Returns products priced between $100-$500, excluding $300
 ```
@@ -243,7 +239,7 @@ You can use operators on different properties:
 filter(products, {
   price: { $gte: 100 },
   category: { $in: ['Electronics', 'Furniture'] },
-  name: { $startsWith: 'M' }
+  name: { $startsWith: 'M' },
 });
 // → Returns products matching all conditions
 ```
@@ -254,9 +250,9 @@ Operators work seamlessly with the existing filter syntax:
 
 ```typescript
 filter(products, {
-  category: 'Electronics',           // Simple equality
-  name: 'M%',                         // Wildcard pattern
-  price: { $gte: 100, $lte: 500 }   // Operators
+  category: 'Electronics', // Simple equality
+  name: 'M%', // Wildcard pattern
+  price: { $gte: 100, $lte: 500 }, // Operators
 });
 ```
 
@@ -283,7 +279,7 @@ const products: Product[] = [
     category: 'Electronics',
     tags: ['computer', 'portable', 'gaming'],
     inStock: true,
-    rating: 4.5
+    rating: 4.5,
   },
   // ... more products
 ];
@@ -292,19 +288,19 @@ const products: Product[] = [
 filter(products, {
   category: { $in: ['Electronics', 'Accessories'] },
   price: { $lte: 500 },
-  inStock: { $eq: true }
+  inStock: { $eq: true },
 });
 
 // Find highly-rated gaming products
 filter(products, {
   tags: { $contains: 'gaming' },
-  rating: { $gte: 4.0 }
+  rating: { $gte: 4.0 },
 });
 
 // Find products with specific name patterns
 filter(products, {
   name: { $startsWith: 'Laptop' },
-  price: { $lt: 1500 }
+  price: { $lt: 1500 },
 });
 ```
 
@@ -329,18 +325,18 @@ filter(users, {
   age: { $gte: 18 },
   createdAt: {
     $gte: new Date('2025-01-01'),
-    $lte: new Date('2025-12-31')
-  }
+    $lte: new Date('2025-12-31'),
+  },
 });
 
 // Find users with specific roles
 filter(users, {
-  roles: { $contains: 'admin' }
+  roles: { $contains: 'admin' },
 });
 
 // Find users with email from specific domains
 filter(users, {
-  email: { $endsWith: '@company.com' }
+  email: { $endsWith: '@company.com' },
 });
 ```
 
@@ -365,15 +361,15 @@ filter(orders, {
   amount: { $gte: 1000 },
   orderDate: {
     $gte: new Date('2025-01-01'),
-    $lte: new Date('2025-03-31')
+    $lte: new Date('2025-03-31'),
   },
-  status: { $in: ['completed', 'shipped'] }
+  status: { $in: ['completed', 'shipped'] },
 });
 
 // Orders with specific products
 filter(orders, {
   items: { $contains: 'PRODUCT-123' },
-  amount: { $lt: 500 }
+  amount: { $lt: 500 },
 });
 ```
 
@@ -387,15 +383,15 @@ import type { ComparisonOperators, ArrayOperators, StringOperators } from '@data
 // Type-safe operator usage
 const priceFilter: ComparisonOperators = {
   $gte: 100,
-  $lte: 500
+  $lte: 500,
 };
 
 const categoryFilter: ArrayOperators = {
-  $in: ['Electronics', 'Furniture']
+  $in: ['Electronics', 'Furniture'],
 };
 
 const nameFilter: StringOperators = {
-  $startsWith: 'Lap'
+  $startsWith: 'Lap',
 };
 ```
 
@@ -425,4 +421,3 @@ filter(users, { age: { $gt: 25 } });
 - [Configuration API](./README.md#configuration-api)
 - [Migration Guide](./MIGRATION.md)
 - [Full API Documentation](./README.md)
-

@@ -18,8 +18,8 @@ npm install @dataforge/core
 
 ## 📚 Packages
 
-| Package | Description | Size |
-|---------|-------------|------|
+| Package                            | Description                                       | Size |
+| ---------------------------------- | ------------------------------------------------- | ---- |
 | [@dataforge/core](./packages/core) | Core utilities and types (Result, Option, Either) | ~2KB |
 
 ## ✨ Features
@@ -129,6 +129,7 @@ git commit -m "feat(core,utils): add new utility functions and types"
 ```
 
 **Commit Types:**
+
 - `feat`: New features
 - `fix`: Bug fixes
 - `docs`: Documentation changes
@@ -141,6 +142,7 @@ git commit -m "feat(core,utils): add new utility functions and types"
 - `chore`: Maintenance tasks
 
 **Scopes:**
+
 - `core`: @dataforge/core package
 - `utils`: @dataforge/utils package
 - `validation`: @dataforge/validation package

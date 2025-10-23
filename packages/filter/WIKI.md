@@ -30,7 +30,7 @@
    - [Boolean Filtering](#boolean-filtering)
 5. [Wildcard Patterns](#wildcard-patterns)
    - [Percent Wildcard (%)](#percent-wildcard-)
-   - [Underscore Wildcard (_)](#underscore-wildcard-_)
+   - [Underscore Wildcard (\_)](#underscore-wildcard-_)
    - [Negation (!)](#negation-)
 6. [Object-Based Filtering](#object-based-filtering)
    - [Single Property Match](#single-property-match)
@@ -167,7 +167,7 @@ import { filter } from '@dataforge/filter';
 const users = [
   { name: 'Alice', age: 30, city: 'Berlin', role: 'admin' },
   { name: 'Bob', age: 25, city: 'London', role: 'user' },
-  { name: 'Charlie', age: 35, city: 'Berlin', role: 'user' }
+  { name: 'Charlie', age: 35, city: 'Berlin', role: 'user' },
 ];
 
 // Simple string matching (searches all properties)
@@ -203,7 +203,7 @@ Filter arrays by searching for a string across all object properties.
 const products = [
   { id: 1, name: 'Laptop', brand: 'Dell' },
   { id: 2, name: 'Mouse', brand: 'Logitech' },
-  { id: 3, name: 'Keyboard', brand: 'Dell' }
+  { id: 3, name: 'Keyboard', brand: 'Dell' },
 ];
 
 // Find all products with "Dell" (case-insensitive by default)
@@ -251,7 +251,7 @@ filter(prices, 50);
 const items = [
   { name: 'Item A', price: 10 },
   { name: 'Item B', price: 25 },
-  { name: 'Item C', price: 10 }
+  { name: 'Item C', price: 10 },
 ];
 
 filter(items, 10);
@@ -266,7 +266,7 @@ Filter by boolean values.
 const tasks = [
   { title: 'Task 1', completed: true },
   { title: 'Task 2', completed: false },
-  { title: 'Task 3', completed: true }
+  { title: 'Task 3', completed: true },
 ];
 
 filter(tasks, true);
@@ -291,11 +291,7 @@ The `%` wildcard matches zero or more characters.
 #### Match at Beginning
 
 ```typescript
-const users = [
-  { name: 'Alice' },
-  { name: 'Alex' },
-  { name: 'Bob' }
-];
+const users = [{ name: 'Alice' }, { name: 'Alex' }, { name: 'Bob' }];
 
 filter(users, 'Al%');
 // → [{ name: 'Alice' }, { name: 'Alex' }]
@@ -314,7 +310,7 @@ filter(users, '%ce');
 const emails = [
   { email: 'user@gmail.com' },
   { email: 'admin@yahoo.com' },
-  { email: 'test@gmail.com' }
+  { email: 'test@gmail.com' },
 ];
 
 filter(emails, '%gmail%');
@@ -324,29 +320,20 @@ filter(emails, '%gmail%');
 #### Multiple Wildcards
 
 ```typescript
-const files = [
-  { name: 'document.pdf' },
-  { name: 'image.png' },
-  { name: 'archive.tar.gz' }
-];
+const files = [{ name: 'document.pdf' }, { name: 'image.png' }, { name: 'archive.tar.gz' }];
 
 filter(files, '%.p%');
 // → [{ name: 'document.pdf' }, { name: 'image.png' }]
 ```
 
-### Underscore Wildcard (_)
+### Underscore Wildcard (\_)
 
 The `_` wildcard matches exactly one character.
 
 #### Single Character Match
 
 ```typescript
-const codes = [
-  { code: 'A1' },
-  { code: 'A2' },
-  { code: 'B1' },
-  { code: 'AB1' }
-];
+const codes = [{ code: 'A1' }, { code: 'A2' }, { code: 'B1' }, { code: 'AB1' }];
 
 filter(codes, 'A_');
 // → [{ code: 'A1' }, { code: 'A2' }]
@@ -355,24 +342,16 @@ filter(codes, 'A_');
 #### Position-Specific Matching
 
 ```typescript
-const ids = [
-  { id: 'user-101' },
-  { id: 'user-102' },
-  { id: 'admin-101' }
-];
+const ids = [{ id: 'user-101' }, { id: 'user-102' }, { id: 'admin-101' }];
 
 filter(ids, 'user-10_');
 // → [{ id: 'user-101' }, { id: 'user-102' }]
 ```
 
-#### Combining _ and %
+#### Combining \_ and %
 
 ```typescript
-const patterns = [
-  { text: 'test' },
-  { text: 'testing' },
-  { text: 'tested' }
-];
+const patterns = [{ text: 'test' }, { text: 'testing' }, { text: 'tested' }];
 
 filter(patterns, 'test__%');
 // → [{ text: 'testing' }, { text: 'tested' }]
@@ -388,7 +367,7 @@ Use `!` prefix to exclude matches.
 const users = [
   { name: 'Alice', city: 'Berlin' },
   { name: 'Bob', city: 'London' },
-  { name: 'Charlie', city: 'Berlin' }
+  { name: 'Charlie', city: 'Berlin' },
 ];
 
 filter(users, '!London');
@@ -401,7 +380,7 @@ filter(users, '!London');
 const emails = [
   { email: 'user@gmail.com' },
   { email: 'admin@company.com' },
-  { email: 'test@gmail.com' }
+  { email: 'test@gmail.com' },
 ];
 
 filter(emails, '!%gmail%');
@@ -411,11 +390,7 @@ filter(emails, '!%gmail%');
 #### Negation with Wildcards
 
 ```typescript
-const files = [
-  { name: 'doc.pdf' },
-  { name: 'image.jpg' },
-  { name: 'video.mp4' }
-];
+const files = [{ name: 'doc.pdf' }, { name: 'image.jpg' }, { name: 'video.mp4' }];
 
 filter(files, '!%.pdf');
 // → [{ name: 'image.jpg' }, { name: 'video.mp4' }]
@@ -435,7 +410,7 @@ Filter by matching object properties.
 const products = [
   { id: 1, name: 'Laptop', category: 'Electronics', price: 1200 },
   { id: 2, name: 'Desk', category: 'Furniture', price: 350 },
-  { id: 3, name: 'Mouse', category: 'Electronics', price: 25 }
+  { id: 3, name: 'Mouse', category: 'Electronics', price: 25 },
 ];
 
 // Match by single property
@@ -467,13 +442,13 @@ const users = [
   {
     name: 'Alice',
     address: { city: 'Berlin', country: 'Germany' },
-    settings: { theme: 'dark', language: 'en' }
+    settings: { theme: 'dark', language: 'en' },
   },
   {
     name: 'Bob',
     address: { city: 'London', country: 'UK' },
-    settings: { theme: 'light', language: 'en' }
-  }
+    settings: { theme: 'light', language: 'en' },
+  },
 ];
 
 // Direct nested property match
@@ -483,7 +458,7 @@ filter(users, { address: { city: 'Berlin' } });
 // Multiple nested properties
 filter(users, {
   address: { country: 'Germany' },
-  settings: { theme: 'dark' }
+  settings: { theme: 'dark' },
 });
 // → [{ name: 'Alice', ... }]
 ```
@@ -494,7 +469,7 @@ filter(users, {
 const items = [
   { name: 'Product A', code: 'PROD-001' },
   { name: 'Product B', code: 'PROD-002' },
-  { name: 'Service A', code: 'SERV-001' }
+  { name: 'Service A', code: 'SERV-001' },
 ];
 
 filter(items, { code: 'PROD-%' });
@@ -533,34 +508,25 @@ filter(numbers, (n) => n % 2 !== 0);
 const products = [
   { name: 'Laptop', price: 1200, inStock: true, rating: 4.5 },
   { name: 'Mouse', price: 25, inStock: true, rating: 4.0 },
-  { name: 'Keyboard', price: 75, inStock: false, rating: 4.2 }
+  { name: 'Keyboard', price: 75, inStock: false, rating: 4.2 },
 ];
 
 // Complex conditions
-filter(products, (product) =>
-  product.price < 100 &&
-  product.inStock &&
-  product.rating >= 4.0
-);
+filter(products, (product) => product.price < 100 && product.inStock && product.rating >= 4.0);
 // → [{ name: 'Mouse', ... }]
 
 // String operations
-filter(products, (product) =>
-  product.name.toLowerCase().includes('key')
-);
+filter(products, (product) => product.name.toLowerCase().includes('key'));
 // → [{ name: 'Keyboard', ... }]
 
 // Date comparisons
 const orders = [
   { id: 1, date: new Date('2025-01-15'), amount: 100 },
   { id: 2, date: new Date('2025-02-20'), amount: 200 },
-  { id: 3, date: new Date('2025-03-10'), amount: 150 }
+  { id: 3, date: new Date('2025-03-10'), amount: 150 },
 ];
 
-filter(orders, (order) =>
-  order.date >= new Date('2025-02-01') &&
-  order.amount > 150
-);
+filter(orders, (order) => order.date >= new Date('2025-02-01') && order.amount > 150);
 // → [{ id: 2, ... }]
 ```
 
@@ -577,13 +543,11 @@ interface User {
 const users: User[] = [
   { id: 1, name: 'Alice', age: 30, isActive: true },
   { id: 2, name: 'Bob', age: 25, isActive: false },
-  { id: 3, name: 'Charlie', age: 35, isActive: true }
+  { id: 3, name: 'Charlie', age: 35, isActive: true },
 ];
 
 // Fully typed predicate
-filter<User>(users, (user: User): boolean =>
-  user.age > 28 && user.isActive
-);
+filter<User>(users, (user: User): boolean => user.age > 28 && user.isActive);
 // → [{ id: 1, ... }, { id: 3, ... }]
 ```
 
@@ -601,8 +565,8 @@ filter(items, (item) => {
 
 // 💡 Better: Use operators when possible
 filter(items, {
-  price: { $gt: 83.33 },  // Pre-calculated
-  category: { $contains: 'electronics' }
+  price: { $gt: 83.33 }, // Pre-calculated
+  category: { $contains: 'electronics' },
 });
 ```
 
@@ -624,7 +588,7 @@ Returns items where the property value is **greater than** the specified value.
 const products = [
   { name: 'Item A', price: 50 },
   { name: 'Item B', price: 150 },
-  { name: 'Item C', price: 250 }
+  { name: 'Item C', price: 250 },
 ];
 
 filter(products, { price: { $gt: 100 } });
@@ -634,7 +598,7 @@ filter(products, { price: { $gt: 100 } });
 const orders = [
   { id: 1, date: new Date('2025-01-15') },
   { id: 2, date: new Date('2025-02-20') },
-  { id: 3, date: new Date('2025-03-10') }
+  { id: 3, date: new Date('2025-03-10') },
 ];
 
 filter(orders, { date: { $gt: new Date('2025-02-01') } });
@@ -649,7 +613,7 @@ filter(products, { price: { $gte: 150 } });
 
 // Date range start
 filter(orders, {
-  date: { $gte: new Date('2025-02-01') }
+  date: { $gte: new Date('2025-02-01') },
 });
 // → Includes orders from Feb 1st onwards
 ```
@@ -662,7 +626,7 @@ filter(products, { price: { $lt: 200 } });
 
 // Before a date
 filter(orders, {
-  date: { $lt: new Date('2025-03-01') }
+  date: { $lt: new Date('2025-03-01') },
 });
 // → Orders before March 1st
 ```
@@ -680,7 +644,7 @@ filter(products, { price: { $lte: 150 } });
 const users = [
   { name: 'Alice', role: 'admin', age: 30 },
   { name: 'Bob', role: 'user', age: 25 },
-  { name: 'Charlie', role: 'admin', age: 35 }
+  { name: 'Charlie', role: 'admin', age: 35 },
 ];
 
 filter(users, { role: { $eq: 'admin' } });
@@ -706,7 +670,7 @@ filter(products, { price: { $ne: 50 } });
 ```typescript
 // Price between $100 and $200 (inclusive)
 filter(products, {
-  price: { $gte: 100, $lte: 200 }
+  price: { $gte: 100, $lte: 200 },
 });
 // → [{ name: 'Item B', price: 150 }]
 
@@ -714,14 +678,14 @@ filter(products, {
 filter(orders, {
   date: {
     $gte: new Date('2025-01-01'),
-    $lte: new Date('2025-02-29')
-  }
+    $lte: new Date('2025-02-29'),
+  },
 });
 // → Orders in Q1 2025
 
 // Excluding boundaries
 filter(products, {
-  price: { $gt: 50, $lt: 250 }
+  price: { $gt: 50, $lt: 250 },
 });
 // → [{ name: 'Item B', price: 150 }]
 ```
@@ -737,11 +701,11 @@ const products = [
   { id: 1, category: 'Electronics' },
   { id: 2, category: 'Furniture' },
   { id: 3, category: 'Books' },
-  { id: 4, category: 'Clothing' }
+  { id: 4, category: 'Clothing' },
 ];
 
 filter(products, {
-  category: { $in: ['Electronics', 'Books'] }
+  category: { $in: ['Electronics', 'Books'] },
 });
 // → [{ id: 1, ... }, { id: 3, ... }]
 
@@ -749,17 +713,17 @@ filter(products, {
 const items = [
   { id: 1, status: 200 },
   { id: 2, status: 404 },
-  { id: 3, status: 500 }
+  { id: 3, status: 500 },
 ];
 
 filter(items, {
-  status: { $in: [200, 201, 202] }
+  status: { $in: [200, 201, 202] },
 });
 // → [{ id: 1, status: 200 }]
 
 // Mixed types
 filter(products, {
-  id: { $in: [1, 3, 5, 7] }
+  id: { $in: [1, 3, 5, 7] },
 });
 // → Products with IDs 1 and 3
 ```
@@ -768,13 +732,13 @@ filter(products, {
 
 ```typescript
 filter(products, {
-  category: { $nin: ['Furniture', 'Clothing'] }
+  category: { $nin: ['Furniture', 'Clothing'] },
 });
 // → [{ id: 1, category: 'Electronics' }, { id: 3, category: 'Books' }]
 
 // Exclude multiple statuses
 filter(items, {
-  status: { $nin: [404, 500] }
+  status: { $nin: [404, 500] },
 });
 // → Only successful responses
 ```
@@ -787,16 +751,16 @@ Checks if an array property contains a specific value.
 const products = [
   { name: 'Laptop', tags: ['computer', 'portable', 'gaming'] },
   { name: 'Mouse', tags: ['computer', 'accessory'] },
-  { name: 'Desk', tags: ['office', 'furniture'] }
+  { name: 'Desk', tags: ['office', 'furniture'] },
 ];
 
 filter(products, {
-  tags: { $contains: 'computer' }
+  tags: { $contains: 'computer' },
 });
 // → [{ name: 'Laptop', ... }, { name: 'Mouse', ... }]
 
 filter(products, {
-  tags: { $contains: 'gaming' }
+  tags: { $contains: 'gaming' },
 });
 // → [{ name: 'Laptop', ... }]
 ```
@@ -807,20 +771,17 @@ Returns items where the array has a specific length.
 
 ```typescript
 filter(products, {
-  tags: { $size: 2 }
+  tags: { $size: 2 },
 });
 // → [{ name: 'Mouse', tags: ['computer', 'accessory'] }]
 
 filter(products, {
-  tags: { $size: 3 }
+  tags: { $size: 3 },
 });
 // → [{ name: 'Laptop', tags: ['computer', 'portable', 'gaming'] }]
 
 // Find items with no tags
-const allProducts = [
-  ...products,
-  { name: 'Unknown', tags: [] }
-];
+const allProducts = [...products, { name: 'Unknown', tags: [] }];
 
 filter(allProducts, { tags: { $size: 0 } });
 // → [{ name: 'Unknown', tags: [] }]
@@ -836,7 +797,7 @@ All string operators are case-insensitive by default (configurable).
 const users = [
   { name: 'Alice', email: 'alice@gmail.com' },
   { name: 'Bob', email: 'bob@yahoo.com' },
-  { name: 'Alex', email: 'alex@gmail.com' }
+  { name: 'Alex', email: 'alex@gmail.com' },
 ];
 
 filter(users, { name: { $startsWith: 'Al' } });
@@ -844,14 +805,18 @@ filter(users, { name: { $startsWith: 'Al' } });
 
 // Email domain filtering
 filter(users, {
-  email: { $startsWith: 'alice' }
+  email: { $startsWith: 'alice' },
 });
 // → [{ name: 'Alice', ... }]
 
 // Case-sensitive
-filter(users, {
-  name: { $startsWith: 'al' }
-}, { caseSensitive: true });
+filter(
+  users,
+  {
+    name: { $startsWith: 'al' },
+  },
+  { caseSensitive: true }
+);
 // → [] (no match)
 ```
 
@@ -859,24 +824,20 @@ filter(users, {
 
 ```typescript
 filter(users, {
-  email: { $endsWith: 'gmail.com' }
+  email: { $endsWith: 'gmail.com' },
 });
 // → [{ name: 'Alice', ... }, { name: 'Alex', ... }]
 
 // File extensions
-const files = [
-  { name: 'document.pdf' },
-  { name: 'image.jpg' },
-  { name: 'video.mp4' }
-];
+const files = [{ name: 'document.pdf' }, { name: 'image.jpg' }, { name: 'video.mp4' }];
 
 filter(files, {
-  name: { $endsWith: '.pdf' }
+  name: { $endsWith: '.pdf' },
 });
 // → [{ name: 'document.pdf' }]
 
 filter(files, {
-  name: { $endsWith: '.jpg' }
+  name: { $endsWith: '.jpg' },
 });
 // → [{ name: 'image.jpg' }]
 ```
@@ -885,12 +846,12 @@ filter(files, {
 
 ```typescript
 filter(users, {
-  email: { $contains: 'gmail' }
+  email: { $contains: 'gmail' },
 });
 // → [{ name: 'Alice', ... }, { name: 'Alex', ... }]
 
 filter(users, {
-  name: { $contains: 'li' }
+  name: { $contains: 'li' },
 });
 // → [{ name: 'Alice', ... }]
 
@@ -898,11 +859,11 @@ filter(users, {
 const links = [
   { url: 'https://example.com/api/users' },
   { url: 'https://example.com/admin/users' },
-  { url: 'https://example.com/api/products' }
+  { url: 'https://example.com/api/products' },
 ];
 
 filter(links, {
-  url: { $contains: '/api/' }
+  url: { $contains: '/api/' },
 });
 // → API endpoints only
 ```
@@ -916,7 +877,7 @@ const products = [
   { name: 'Item A', price: 50 },
   { name: 'Item B', price: 150 },
   { name: 'Item C', price: 250 },
-  { name: 'Item D', price: 300 }
+  { name: 'Item D', price: 300 },
 ];
 
 // Price between 100 and 200, excluding 150
@@ -924,8 +885,8 @@ filter(products, {
   price: {
     $gte: 100,
     $lte: 200,
-    $ne: 150
-  }
+    $ne: 150,
+  },
 });
 // → [] (Item B is excluded by $ne)
 
@@ -934,8 +895,8 @@ filter(products, {
   price: {
     $gte: 100,
     $lte: 300,
-    $ne: 250
-  }
+    $ne: 250,
+  },
 });
 // → [{ name: 'Item B', ... }, { name: 'Item D', ... }]
 ```
@@ -947,7 +908,7 @@ const products = [
   { name: 'Laptop Pro', price: 1200, category: 'Electronics', rating: 4.5 },
   { name: 'Mouse', price: 25, category: 'Accessories', rating: 4.0 },
   { name: 'Monitor', price: 450, category: 'Electronics', rating: 4.7 },
-  { name: 'Desk', price: 350, category: 'Furniture', rating: 4.2 }
+  { name: 'Desk', price: 350, category: 'Furniture', rating: 4.2 },
 ];
 
 // Complex multi-condition filter
@@ -955,7 +916,7 @@ filter(products, {
   price: { $gte: 100, $lte: 500 },
   category: { $in: ['Electronics', 'Accessories'] },
   name: { $startsWith: 'M' },
-  rating: { $gte: 4.0 }
+  rating: { $gte: 4.0 },
 });
 // → [{ name: 'Monitor', ... }]
 
@@ -963,13 +924,13 @@ filter(products, {
 const inventory = [
   { name: 'Product A', price: 299, category: 'Electronics', inStock: true },
   { name: 'Product B', price: 599, category: 'Electronics', inStock: true },
-  { name: 'Product C', price: 199, category: 'Electronics', inStock: false }
+  { name: 'Product C', price: 199, category: 'Electronics', inStock: false },
 ];
 
 filter(inventory, {
   price: { $lte: 400 },
   category: { $eq: 'Electronics' },
-  inStock: { $eq: true }
+  inStock: { $eq: true },
 });
 // → [{ name: 'Product A', ... }]
 ```
@@ -990,11 +951,7 @@ Controls case sensitivity for string matching.
 **Default:** `false`
 
 ```typescript
-const users = [
-  { name: 'Alice' },
-  { name: 'ALICE' },
-  { name: 'alice' }
-];
+const users = [{ name: 'Alice' }, { name: 'ALICE' }, { name: 'alice' }];
 
 // Case-insensitive (default)
 filter(users, 'alice');
@@ -1014,21 +971,22 @@ filter(users, 'ALICE', { caseSensitive: true });
 **Impact on String Operators:**
 
 ```typescript
-const emails = [
-  { email: 'User@Example.com' },
-  { email: 'admin@example.com' }
-];
+const emails = [{ email: 'User@Example.com' }, { email: 'admin@example.com' }];
 
 // Case-insensitive
 filter(emails, {
-  email: { $startsWith: 'user' }
+  email: { $startsWith: 'user' },
 });
 // → [{ email: 'User@Example.com' }]
 
 // Case-sensitive
-filter(emails, {
-  email: { $startsWith: 'user' }
-}, { caseSensitive: true });
+filter(
+  emails,
+  {
+    email: { $startsWith: 'user' },
+  },
+  { caseSensitive: true }
+);
 // → [] (no match)
 ```
 
@@ -1047,34 +1005,38 @@ const data = [
       level2: {
         level3: {
           level4: {
-            value: 'deep'
-          }
-        }
-      }
-    }
-  }
+            value: 'deep',
+          },
+        },
+      },
+    },
+  },
 ];
 
 // Default depth (3)
 filter(data, {
   level1: {
     level2: {
-      level3: { value: 'deep' }
-    }
-  }
+      level3: { value: 'deep' },
+    },
+  },
 });
 // → May not match if depth exceeded
 
 // Increase depth
-filter(data, {
-  level1: {
-    level2: {
-      level3: {
-        level4: { value: 'deep' }
-      }
-    }
-  }
-}, { maxDepth: 5 });
+filter(
+  data,
+  {
+    level1: {
+      level2: {
+        level3: {
+          level4: { value: 'deep' },
+        },
+      },
+    },
+  },
+  { maxDepth: 5 }
+);
 // → Matches
 ```
 
@@ -1101,11 +1063,13 @@ const result2 = filter(largeDataset, { category: 'Electronics' }, { enableCache:
 ```
 
 **When to Enable:**
+
 - Filtering large datasets repeatedly
 - Same filter expressions used multiple times
 - Performance is critical
 
 **When NOT to Enable:**
+
 - Data changes frequently
 - Memory constraints
 - One-time filters
@@ -1132,11 +1096,7 @@ const numericTolerance = (actual: unknown, expected: unknown) => {
   return actual === expected;
 };
 
-const measurements = [
-  { value: 10.001 },
-  { value: 10.002 },
-  { value: 11.0 }
-];
+const measurements = [{ value: 10.001 }, { value: 10.002 }, { value: 11.0 }];
 
 filter(measurements, 10, { customComparator: numericTolerance });
 // → [{ value: 10.001 }, { value: 10.002 }]
@@ -1164,12 +1124,12 @@ Combine different filtering syntaxes for maximum flexibility.
 const products = [
   { name: 'Laptop', price: 1200, category: 'Electronics' },
   { name: 'Monitor', price: 450, category: 'Electronics' },
-  { name: 'Desk', price: 350, category: 'Furniture' }
+  { name: 'Desk', price: 350, category: 'Furniture' },
 ];
 
 filter(products, {
-  category: 'Electronics',    // Simple equality
-  price: { $gte: 400 }        // Operator
+  category: 'Electronics', // Simple equality
+  price: { $gte: 400 }, // Operator
 });
 // → [{ name: 'Laptop', ... }, { name: 'Monitor', ... }]
 ```
@@ -1180,12 +1140,12 @@ filter(products, {
 const files = [
   { name: 'report-2025.pdf', size: 1024 },
   { name: 'image-2025.jpg', size: 2048 },
-  { name: 'video-2025.mp4', size: 10240 }
+  { name: 'video-2025.mp4', size: 10240 },
 ];
 
 filter(files, {
-  name: '%2025%',           // Wildcard
-  size: { $lt: 5000 }       // Operator
+  name: '%2025%', // Wildcard
+  size: { $lt: 5000 }, // Operator
 });
 // → [{ name: 'report-2025.pdf', ... }, { name: 'image-2025.jpg', ... }]
 ```
@@ -1196,12 +1156,12 @@ filter(files, {
 const users = [
   { name: 'Alice', role: 'admin', age: 30 },
   { name: 'Bob', role: 'user', age: 25 },
-  { name: 'Charlie', role: 'admin', age: 35 }
+  { name: 'Charlie', role: 'admin', age: 35 },
 ];
 
 filter(users, {
-  role: '!user',           // Negation
-  age: { $gte: 30 }        // Operator
+  role: '!user', // Negation
+  age: { $gte: 30 }, // Operator
 });
 // → [{ name: 'Alice', ... }, { name: 'Charlie', ... }]
 ```
@@ -1215,30 +1175,30 @@ const products = [
     price: 1500,
     category: 'Electronics',
     tags: ['gaming', 'portable'],
-    inStock: true
+    inStock: true,
   },
   {
     name: 'Office Laptop',
     price: 800,
     category: 'Electronics',
     tags: ['business', 'portable'],
-    inStock: true
+    inStock: true,
   },
   {
     name: 'Gaming Desktop',
     price: 2000,
     category: 'Electronics',
     tags: ['gaming', 'powerful'],
-    inStock: false
-  }
+    inStock: false,
+  },
 ];
 
 filter(products, {
-  category: 'Electronics',              // Simple equality
-  name: '%Laptop%',                     // Wildcard
-  price: { $gte: 700, $lte: 1600 },   // Range operators
-  tags: { $contains: 'gaming' },       // Array operator
-  inStock: { $eq: true }               // Boolean operator
+  category: 'Electronics', // Simple equality
+  name: '%Laptop%', // Wildcard
+  price: { $gte: 700, $lte: 1600 }, // Range operators
+  tags: { $contains: 'gaming' }, // Array operator
+  inStock: { $eq: true }, // Boolean operator
 });
 // → [{ name: 'Gaming Laptop', ... }]
 ```
@@ -1265,7 +1225,7 @@ import type {
   ComparisonOperators,
   ArrayOperators,
   StringOperators,
-  OperatorExpression
+  OperatorExpression,
 } from '@dataforge/filter';
 ```
 
@@ -1282,23 +1242,30 @@ interface Product {
 }
 
 const products: Product[] = [
-  { id: 1, name: 'Laptop', price: 1200, category: 'Electronics', tags: ['computer'], inStock: true },
+  {
+    id: 1,
+    name: 'Laptop',
+    price: 1200,
+    category: 'Electronics',
+    tags: ['computer'],
+    inStock: true,
+  },
   // ...
 ];
 
 // Type-safe filtering
 const result = filter<Product>(products, {
-  price: { $gte: 100 }
+  price: { $gte: 100 },
 });
 // result is Product[]
 
 // TypeScript catches errors
 filter<Product>(products, {
-  price: { $gte: '100' }  // ❌ Error: Type 'string' not assignable to 'number | Date'
+  price: { $gte: '100' }, // ❌ Error: Type 'string' not assignable to 'number | Date'
 });
 
 filter<Product>(products, {
-  invalidProp: 'value'     // ❌ Error: Property 'invalidProp' does not exist
+  invalidProp: 'value', // ❌ Error: Property 'invalidProp' does not exist
 });
 ```
 
@@ -1312,7 +1279,7 @@ const filtered = filter(numbers, (n) => n > 3);
 
 const users = [
   { name: 'Alice', age: 30 },
-  { name: 'Bob', age: 25 }
+  { name: 'Bob', age: 25 },
 ];
 const adults = filter(users, (user) => user.age >= 18);
 // adults is { name: string; age: number; }[]
@@ -1333,22 +1300,22 @@ interface User {
 // Type-safe operator expressions
 const ageFilter: ComparisonOperators = {
   $gte: 18,
-  $lte: 65
+  $lte: 65,
 };
 
 const roleFilter: ArrayOperators = {
-  $contains: 'admin'
+  $contains: 'admin',
 };
 
 const emailFilter: StringOperators = {
-  $endsWith: '@company.com'
+  $endsWith: '@company.com',
 };
 
 // Combine in filter
 filter<User>(users, {
   age: ageFilter,
   roles: roleFilter,
-  email: emailFilter
+  email: emailFilter,
 });
 ```
 
@@ -1379,7 +1346,7 @@ filter<Product>(products, (p) => p.price > 100);
 // Define reusable expressions
 const electronicFilter: Expression<Product> = {
   category: 'Electronics',
-  price: { $lte: 1000 }
+  price: { $lte: 1000 },
 };
 
 const premiumFilter: Expression<Product> = (product) =>
@@ -1396,14 +1363,14 @@ filter<Product>(products, premiumFilter);
 const options: FilterOptions = {
   caseSensitive: true,
   maxDepth: 5,
-  enableCache: false
+  enableCache: false,
 };
 
 filter(data, expression, options);
 
 // Partial options
 const partialOptions: FilterOptions = {
-  caseSensitive: true
+  caseSensitive: true,
   // Other options use defaults
 };
 ```
@@ -1449,7 +1416,7 @@ const products: Product[] = [
     tags: ['laptop', 'gaming', 'professional'],
     discount: 10,
     images: ['img1.jpg', 'img2.jpg'],
-    createdAt: new Date('2025-01-15')
+    createdAt: new Date('2025-01-15'),
   },
   // ... more products
 ];
@@ -1460,13 +1427,13 @@ const affordableLaptops = filter(products, {
   subcategory: 'Computers',
   price: { $lte: 1500 },
   rating: { $gte: 4.5 },
-  inStock: { $eq: true }
+  inStock: { $eq: true },
 });
 
 // Products on sale (discount > 0)
 const onSale = filter(products, {
   discount: { $gt: 0 },
-  inStock: true
+  inStock: true,
 });
 
 // New arrivals (last 30 days)
@@ -1475,26 +1442,26 @@ thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
 const newArrivals = filter(products, {
   createdAt: { $gte: thirtyDaysAgo },
-  inStock: true
+  inStock: true,
 });
 
 // Premium products by specific brands
 const premiumProducts = filter(products, {
   brand: { $in: ['Apple', 'Dell', 'HP'] },
   price: { $gte: 1000 },
-  rating: { $gte: 4.5 }
+  rating: { $gte: 4.5 },
 });
 
 // Products with many reviews
 const popularProducts = filter(products, {
   reviews: { $gte: 1000 },
-  rating: { $gte: 4.0 }
+  rating: { $gte: 4.0 },
 });
 
 // Search by keyword in name
 const searchResults = filter(products, {
   name: { $contains: 'laptop' },
-  price: { $lte: 2000 }
+  price: { $lte: 2000 },
 });
 ```
 
@@ -1754,28 +1721,32 @@ Tips and strategies for optimal performance.
 **Performance Ranking (fastest to slowest):**
 
 1. **Simple String/Number/Boolean** - Fastest
+
    ```typescript
-   filter(data, 'Berlin');  // ✅ Fastest
+   filter(data, 'Berlin'); // ✅ Fastest
    ```
 
 2. **Object-Based Filtering** - Very Fast
+
    ```typescript
-   filter(data, { city: 'Berlin' });  // ✅ Very Fast
+   filter(data, { city: 'Berlin' }); // ✅ Very Fast
    ```
 
 3. **Operators** - Fast (optimized with early exit)
+
    ```typescript
-   filter(data, { age: { $gte: 18 } });  // ✅ Fast
+   filter(data, { age: { $gte: 18 } }); // ✅ Fast
    ```
 
 4. **Wildcards** - Moderate (regex compilation cached)
+
    ```typescript
-   filter(data, '%berlin%');  // ⚠️ Moderate
+   filter(data, '%berlin%'); // ⚠️ Moderate
    ```
 
 5. **Predicate Functions** - Slowest (most flexible)
    ```typescript
-   filter(data, (item) => item.age > 18);  // ⚠️ Slowest
+   filter(data, (item) => item.age > 18); // ⚠️ Slowest
    ```
 
 ### Caching Strategy
@@ -1795,12 +1766,14 @@ for (let i = 0; i < 1000; i++) {
 ```
 
 **When to Enable Cache:**
+
 - Large datasets (>1000 items)
 - Repeated identical queries
 - Read-heavy workloads
 - Static data
 
 **When NOT to Enable:**
+
 - Frequently changing data
 - One-time queries
 - Memory-constrained environments
@@ -1820,9 +1793,9 @@ const results = filter(pagedData, expression);
 
 // ✅ Best: Pre-filter with operators, then apply complex logic
 const preFiltered = filter(millionRecords, {
-  category: { $in: ['Electronics', 'Books'] }  // Fast operator filter
+  category: { $in: ['Electronics', 'Books'] }, // Fast operator filter
 });
-const finalResults = filter(preFiltered, complexPredicate);  // Smaller dataset
+const finalResults = filter(preFiltered, complexPredicate); // Smaller dataset
 ```
 
 ### Optimization Tips
@@ -1831,18 +1804,20 @@ const finalResults = filter(preFiltered, complexPredicate);  // Smaller dataset
 // ❌ Slow: Complex predicate on large dataset
 filter(largeDataset, (item) => {
   const calculated = item.price * 1.2 + item.tax;
-  return calculated > 100 &&
+  return (
+    calculated > 100 &&
     item.category.toLowerCase().includes('electronics') &&
     item.inStock &&
-    item.rating >= 4.0;
+    item.rating >= 4.0
+  );
 });
 
 // ✅ Fast: Use operators when possible
 filter(largeDataset, {
-  price: { $gte: 80 },  // Pre-calculated threshold
+  price: { $gte: 80 }, // Pre-calculated threshold
   category: { $contains: 'electronics' },
   inStock: { $eq: true },
-  rating: { $gte: 4.0 }
+  rating: { $gte: 4.0 },
 });
 
 // ✅ Fast: Pre-filter with simple checks first
@@ -1862,7 +1837,7 @@ console.timeEnd('Filter Performance');
 const testData = Array.from({ length: 10000 }, (_, i) => ({
   id: i,
   value: Math.random() * 1000,
-  category: i % 2 === 0 ? 'A' : 'B'
+  category: i % 2 === 0 ? 'A' : 'B',
 }));
 
 console.time('Simple Object');
@@ -1910,7 +1885,7 @@ filter(data, { age: { $gte: 18, $lt: 65 } });
 filter(data, expression, {
   caseSensitive: true,
   maxDepth: 5,
-  enableCache: true
+  enableCache: true,
 });
 
 // ✅ v0.0.1: Runtime validation
@@ -1925,7 +1900,7 @@ filter(products, (p) => p.price >= 100 && p.price <= 500);
 
 // After (v0.0.1) - Recommended
 filter(products, {
-  price: { $gte: 100, $lte: 500 }
+  price: { $gte: 100, $lte: 500 },
 });
 
 // Benefits:
@@ -1941,7 +1916,7 @@ filter(products, {
 
 ```typescript
 // Native filter
-const adults = users.filter(u => u.age >= 18);
+const adults = users.filter((u) => u.age >= 18);
 
 // @dataforge/filter equivalent
 const adults = filter(users, (u) => u.age >= 18);
@@ -1949,17 +1924,13 @@ const adults = filter(users, (u) => u.age >= 18);
 const adults = filter(users, { age: { $gte: 18 } });
 
 // Native: Multiple conditions
-const results = users.filter(u =>
-  u.age >= 18 &&
-  u.city === 'Berlin' &&
-  u.isActive
-);
+const results = users.filter((u) => u.age >= 18 && u.city === 'Berlin' && u.isActive);
 
 // @dataforge/filter
 const results = filter(users, {
   age: { $gte: 18 },
   city: 'Berlin',
-  isActive: true
+  isActive: true,
 });
 ```
 
@@ -1967,31 +1938,28 @@ const results = filter(users, {
 
 ```typescript
 // ❌ Native: No wildcard support
-const results = users.filter(u =>
-  u.email.includes('gmail.com')
-);
+const results = users.filter((u) => u.email.includes('gmail.com'));
 
 // ✅ @dataforge/filter
 const results = filter(users, {
-  email: { $endsWith: 'gmail.com' }
+  email: { $endsWith: 'gmail.com' },
 });
 // OR
 const results = filter(users, '%gmail.com');
 
 // ❌ Native: Complex string operations
-const results = users.filter(u =>
-  u.name.toLowerCase().startsWith('al')
-);
+const results = users.filter((u) => u.name.toLowerCase().startsWith('al'));
 
 // ✅ @dataforge/filter
 const results = filter(users, {
-  name: { $startsWith: 'Al' }
+  name: { $startsWith: 'Al' },
 });
 ```
 
 **When to Migrate:**
 
 **Migrate When:**
+
 - Need wildcard pattern matching
 - Filtering by partial object matches
 - Want to serialize filter expressions
@@ -2000,6 +1968,7 @@ const results = filter(users, {
 - Need deep object comparison
 
 **Keep Native When:**
+
 - Simple one-time predicates
 - Performance is ultra-critical (native is marginally faster)
 - No dependencies requirement is strict
@@ -2019,14 +1988,14 @@ Runtime validation with Zod.
 import { validateExpression } from '@dataforge/filter';
 
 // Valid expressions
-validateExpression('string');          // ✅ Valid
-validateExpression(42);                // ✅ Valid
+validateExpression('string'); // ✅ Valid
+validateExpression(42); // ✅ Valid
 validateExpression({ prop: 'value' }); // ✅ Valid
-validateExpression((x) => true);       // ✅ Valid
+validateExpression((x) => true); // ✅ Valid
 
 // Invalid expressions
 try {
-  validateExpression(undefined);       // ❌ Throws error
+  validateExpression(undefined); // ❌ Throws error
 } catch (error) {
   console.error(error.message);
   // "Invalid filter expression: Expected string | number | boolean | null | function | object"
@@ -2045,14 +2014,14 @@ try {
 import { validateOptions } from '@dataforge/filter';
 
 // Valid options
-validateOptions({ caseSensitive: true });  // ✅ Valid
-validateOptions({ maxDepth: 5 });          // ✅ Valid
-validateOptions({ enableCache: false });   // ✅ Valid
-validateOptions({});                       // ✅ Valid (uses defaults)
+validateOptions({ caseSensitive: true }); // ✅ Valid
+validateOptions({ maxDepth: 5 }); // ✅ Valid
+validateOptions({ enableCache: false }); // ✅ Valid
+validateOptions({}); // ✅ Valid (uses defaults)
 
 // Invalid options
 try {
-  validateOptions({ maxDepth: 15 });      // ❌ maxDepth must be 1-10
+  validateOptions({ maxDepth: 15 }); // ❌ maxDepth must be 1-10
 } catch (error) {
   console.error(error.message);
   // "Invalid filter options: maxDepth too large"
@@ -2143,12 +2112,9 @@ Complete reference for all exported functions and types.
 Main filtering function.
 
 **Signature:**
+
 ```typescript
-function filter<T>(
-  array: T[],
-  expression: Expression<T>,
-  options?: FilterOptions
-): T[]
+function filter<T>(array: T[], expression: Expression<T>, options?: FilterOptions): T[];
 ```
 
 **Parameters:**
@@ -2177,11 +2143,13 @@ filter(items, (item) => item.active);
 Validates a filter expression.
 
 **Signature:**
+
 ```typescript
-function validateExpression<T>(expression: unknown): Expression<T>
+function validateExpression<T>(expression: unknown): Expression<T>;
 ```
 
 **Parameters:**
+
 - `expression` (`unknown`): Expression to validate
 
 **Returns:** `Expression<T>` - Validated expression
@@ -2191,8 +2159,8 @@ function validateExpression<T>(expression: unknown): Expression<T>
 **Examples:**
 
 ```typescript
-validateExpression('string');    // ✅ Returns 'string'
-validateExpression(undefined);   // ❌ Throws Error
+validateExpression('string'); // ✅ Returns 'string'
+validateExpression(undefined); // ❌ Throws Error
 ```
 
 ---
@@ -2202,11 +2170,13 @@ validateExpression(undefined);   // ❌ Throws Error
 Validates filter options.
 
 **Signature:**
+
 ```typescript
-function validateOptions(options: unknown): FilterOptions
+function validateOptions(options: unknown): FilterOptions;
 ```
 
 **Parameters:**
+
 - `options` (`unknown`): Options to validate
 
 **Returns:** `FilterOptions` - Validated options
@@ -2216,8 +2186,8 @@ function validateOptions(options: unknown): FilterOptions
 **Examples:**
 
 ```typescript
-validateOptions({ caseSensitive: true });  // ✅ Returns options
-validateOptions({ maxDepth: 15 });         // ❌ Throws Error (max is 10)
+validateOptions({ caseSensitive: true }); // ✅ Returns options
+validateOptions({ maxDepth: 15 }); // ❌ Throws Error (max is 10)
 ```
 
 ---
@@ -2227,11 +2197,13 @@ validateOptions({ maxDepth: 15 });         // ❌ Throws Error (max is 10)
 Merges options with defaults.
 
 **Signature:**
+
 ```typescript
-function mergeConfig(options?: FilterOptions): FilterConfig
+function mergeConfig(options?: FilterOptions): FilterConfig;
 ```
 
 **Parameters:**
+
 - `options` (`FilterOptions`, optional): User options
 
 **Returns:** `FilterConfig` - Complete configuration with defaults
@@ -2239,8 +2211,8 @@ function mergeConfig(options?: FilterOptions): FilterConfig
 **Examples:**
 
 ```typescript
-mergeConfig();  // Returns default config
-mergeConfig({ caseSensitive: true });  // Merges with defaults
+mergeConfig(); // Returns default config
+mergeConfig({ caseSensitive: true }); // Merges with defaults
 ```
 
 ---
@@ -2250,11 +2222,13 @@ mergeConfig({ caseSensitive: true });  // Merges with defaults
 Creates a complete filter configuration.
 
 **Signature:**
+
 ```typescript
-function createFilterConfig(options?: FilterOptions): FilterConfig
+function createFilterConfig(options?: FilterOptions): FilterConfig;
 ```
 
 **Parameters:**
+
 - `options` (`FilterOptions`, optional): User options
 
 **Returns:** `FilterConfig` - Complete configuration
@@ -2339,7 +2313,7 @@ describe('User Filtering', () => {
   const users = [
     { id: 1, name: 'Alice', age: 30, role: 'admin' },
     { id: 2, name: 'Bob', age: 25, role: 'user' },
-    { id: 3, name: 'Charlie', age: 35, role: 'user' }
+    { id: 3, name: 'Charlie', age: 35, role: 'user' },
   ];
 
   it('filters by age', () => {
@@ -2378,7 +2352,7 @@ function createMockUser(overrides = {}) {
     age: 25,
     email: 'test@example.com',
     isActive: true,
-    ...overrides
+    ...overrides,
   };
 }
 
@@ -2406,26 +2380,20 @@ describe('Edge Cases', () => {
   it('handles null values', () => {
     const data = [
       { id: 1, value: null },
-      { id: 2, value: 'test' }
+      { id: 2, value: 'test' },
     ];
     const result = filter(data, { value: null });
     expect(result).toHaveLength(1);
   });
 
   it('handles undefined properties', () => {
-    const data = [
-      { id: 1 },
-      { id: 2, value: 'test' }
-    ];
+    const data = [{ id: 1 }, { id: 2, value: 'test' }];
     const result = filter(data, { value: 'test' });
     expect(result).toHaveLength(1);
   });
 
   it('handles special characters', () => {
-    const data = [
-      { email: 'user@example.com' },
-      { email: 'admin@test.org' }
-    ];
+    const data = [{ email: 'user@example.com' }, { email: 'admin@test.org' }];
     const result = filter(data, { email: '%@example.com' });
     expect(result).toHaveLength(1);
   });
@@ -2447,11 +2415,11 @@ describe('E-commerce Integration', () => {
       category: 'Electronics',
       price: { $lte: 1000 },
       inStock: true,
-      rating: { $gte: 4.0 }
+      rating: { $gte: 4.0 },
     });
 
     expect(results.length).toBeGreaterThan(0);
-    results.forEach(product => {
+    results.forEach((product) => {
       expect(product.category).toBe('Electronics');
       expect(product.price).toBeLessThanOrEqual(1000);
       expect(product.inStock).toBe(true);
@@ -2479,13 +2447,11 @@ const result = [...electronics, ...books];
 
 // Option 2: Use $in operator
 const result = filter(products, {
-  category: { $in: ['Electronics', 'Books'] }
+  category: { $in: ['Electronics', 'Books'] },
 });
 
 // Option 3: Predicate function
-const result = filter(products, (p) =>
-  p.category === 'Electronics' || p.category === 'Books'
-);
+const result = filter(products, (p) => p.category === 'Electronics' || p.category === 'Books');
 ```
 
 ### Can I filter nested arrays?
@@ -2495,12 +2461,10 @@ Use predicate functions:
 ```typescript
 const data = [
   { id: 1, items: [{ name: 'A' }, { name: 'B' }] },
-  { id: 2, items: [{ name: 'C' }] }
+  { id: 2, items: [{ name: 'C' }] },
 ];
 
-const result = filter(data, (item) =>
-  item.items.some(subItem => subItem.name === 'A')
-);
+const result = filter(data, (item) => item.items.some((subItem) => subItem.name === 'A'));
 ```
 
 ### How do I handle null/undefined values?
@@ -2509,14 +2473,14 @@ const result = filter(data, (item) =>
 const data = [
   { id: 1, value: null },
   { id: 2, value: undefined },
-  { id: 3, value: 'test' }
+  { id: 3, value: 'test' },
 ];
 
 // Filter for null
-filter(data, { value: null });  // Returns id: 1
+filter(data, { value: null }); // Returns id: 1
 
 // Filter out null/undefined
-filter(data, (item) => item.value != null);  // Returns id: 3
+filter(data, (item) => item.value != null); // Returns id: 3
 ```
 
 ### What's the performance impact of operators vs predicates?
@@ -2589,7 +2553,7 @@ Yes! This is a major advantage:
 // Save filter to JSON
 const filterExpr = {
   price: { $gte: 100, $lte: 500 },
-  category: { $in: ['Electronics', 'Books'] }
+  category: { $in: ['Electronics', 'Books'] },
 };
 localStorage.setItem('savedFilter', JSON.stringify(filterExpr));
 
@@ -2607,8 +2571,8 @@ const endDate = new Date('2025-12-31');
 const results = filter(orders, {
   date: {
     $gte: startDate,
-    $lte: endDate
-  }
+    $lte: endDate,
+  },
 });
 
 // Last 30 days
@@ -2616,7 +2580,7 @@ const thirtyDaysAgo = new Date();
 thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
 const recent = filter(orders, {
-  date: { $gte: thirtyDaysAgo }
+  date: { $gte: thirtyDaysAgo },
 });
 ```
 
@@ -2626,10 +2590,7 @@ Yes:
 
 ```typescript
 const result = filter(
-  filter(
-    filter(data, { category: 'Electronics' }),
-    { price: { $lte: 1000 } }
-  ),
+  filter(filter(data, { category: 'Electronics' }), { price: { $lte: 1000 } }),
   { inStock: true }
 );
 
@@ -2637,7 +2598,7 @@ const result = filter(
 const result = filter(data, {
   category: 'Electronics',
   price: { $lte: 1000 },
-  inStock: true
+  inStock: true,
 });
 ```
 
@@ -2645,15 +2606,19 @@ const result = filter(data, {
 
 ```typescript
 // Case-insensitive (default)
-filter(users, 'alice');  // Matches 'Alice', 'ALICE', 'alice'
+filter(users, 'alice'); // Matches 'Alice', 'ALICE', 'alice'
 
 // Case-sensitive
-filter(users, 'alice', { caseSensitive: true });  // Only 'alice'
+filter(users, 'alice', { caseSensitive: true }); // Only 'alice'
 
 // With operators
-filter(users, {
-  name: { $startsWith: 'Al' }
-}, { caseSensitive: true });
+filter(
+  users,
+  {
+    name: { $startsWith: 'Al' },
+  },
+  { caseSensitive: true }
+);
 ```
 
 [↑ Back to top](#table-of-contents)
@@ -2725,20 +2690,20 @@ filter(products, { someField: 'value' } as any);
 
 ```typescript
 // ❌ No results
-filter(users, '%Alice%');  // Expecting matches but gets []
+filter(users, '%Alice%'); // Expecting matches but gets []
 ```
 
 **Solution:**
 
 ```typescript
 // Check case sensitivity
-filter(users, '%Alice%', { caseSensitive: false });  // Default
+filter(users, '%Alice%', { caseSensitive: false }); // Default
 
 // Check actual data
 console.log('Sample data:', users[0]);
 
 // Try simpler pattern
-filter(users, 'Alice');  // Without wildcards
+filter(users, 'Alice'); // Without wildcards
 ```
 
 ### Performance issues
@@ -2759,7 +2724,7 @@ filter(largeDataset, (item) => {
 // ✅ Use operators
 filter(largeDataset, {
   price: { $gte: 100 },
-  category: { $in: ['A', 'B'] }
+  category: { $in: ['A', 'B'] },
 });
 
 // ✅ Enable cache for repeated queries
@@ -2775,6 +2740,7 @@ const final = filter(preFiltered, complexExpression);
 **Problem:** Cache doesn't seem to improve performance
 
 **Checklist:**
+
 1. ✅ Enable cache: `{ enableCache: true }`
 2. ✅ Use identical expressions (objects must be same reference or identical)
 3. ✅ Data hasn't changed between calls
@@ -2787,7 +2753,7 @@ const final = filter(preFiltered, complexExpression);
 ```typescript
 // ❌ Might be treated as literal object
 const expr = { price: { $gt: 100 } };
-filter(products, expr);  // Not working
+filter(products, expr); // Not working
 ```
 
 **Solution:**
@@ -2795,7 +2761,7 @@ filter(products, expr);  // Not working
 ```typescript
 // ✅ Ensure correct syntax
 filter(products, {
-  price: { $gt: 100 }  // Inline or properly structured
+  price: { $gt: 100 }, // Inline or properly structured
 });
 
 // ✅ Check TypeScript types
@@ -2822,6 +2788,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for gu
 4. Submit a pull request
 
 **Areas for Contribution:**
+
 - Bug fixes
 - Documentation improvements
 - Performance optimizations
@@ -2867,6 +2834,7 @@ We love hearing your ideas! Open an issue with:
 ### v0.0.1 (Latest - October 2025)
 
 **Major Features:**
+
 - 13 MongoDB-style operators ($gt, $gte, $lt, $lte, $eq, $ne, $in, $nin, $contains, $size, $startsWith, $endsWith)
 - Configuration API with 4 options (caseSensitive, maxDepth, enableCache, customComparator)
 - Runtime validation with Zod
@@ -2876,10 +2844,12 @@ We love hearing your ideas! Open an issue with:
 - 240+ comprehensive tests
 
 **Breaking Changes:**
+
 - Node.js >= 20 required (was >= 18)
 - None for v3.x users (100% backward compatible)
 
 **Improvements:**
+
 - Modular architecture for better maintainability
 - Enhanced documentation with real-world examples
 - Better error messages
@@ -2888,8 +2858,9 @@ We love hearing your ideas! Open an issue with:
 ### v3.x
 
 **Features:**
+
 - String, number, boolean filtering
-- Wildcard patterns (%, _)
+- Wildcard patterns (%, \_)
 - Negation (!)
 - Object-based filtering
 - Predicate functions
@@ -2923,11 +2894,13 @@ The above copyright notice and this permission notice shall be included in all c
 **Repository:** [github.com/mcabreradev/filter](https://github.com/mcabreradev/filter)
 
 **Dependencies:**
+
 - [Zod](https://zod.dev/) - Runtime validation (production)
 - [Vitest](https://vitest.dev/) - Testing framework (development)
 - [TypeScript](https://www.typescriptlang.org/) - Language (development)
 
 **Inspired By:**
+
 - MongoDB query syntax
 - SQL wildcard patterns
 - Lodash/Underscore filtering utilities
@@ -2950,5 +2923,4 @@ If you find this library useful, please consider giving it a star on [GitHub](ht
 
 ---
 
-*Last updated: October 2025 | Version 5.0.0*
-
+_Last updated: October 2025 | Version 5.0.0_
