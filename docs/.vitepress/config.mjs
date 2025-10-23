@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'DataForge',
@@ -20,25 +20,21 @@ export default defineConfig({
       { text: 'GitHub', link: 'https://github.com/mcabreradev/dataforge' },
     ],
 
-    sidebar: {
-      '/packages/': [
-        {
-          text: 'Packages',
-          items: [
-            { text: 'Overview', link: '/packages/' },
-            { text: '@dataforge/core', link: '/packages/core' },
-            { text: '@dataforge/utils', link: '/packages/utils' },
-            { text: '@dataforge/validation', link: '/packages/validation' },
+        sidebar: {
+          '/packages/': [
+            {
+              text: 'Packages',
+              items: [
+                { text: 'Overview', link: '/packages/' },
+                { text: '@dataforge/filter', link: '/packages/filter' },
+              ],
+            },
           ],
-        },
-      ],
       '/api/': [
         {
           text: 'API Reference',
           items: [
-            { text: 'Core', link: '/api/core' },
-            { text: 'Utils', link: '/api/utils' },
-            { text: 'Validation', link: '/api/validation' },
+            { text: 'Overview', link: '/api' },
           ],
         },
       ],
@@ -55,4 +51,4 @@ export default defineConfig({
       provider: 'local',
     },
   },
-});
+})
