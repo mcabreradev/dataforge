@@ -14,5 +14,3 @@ export type {
 
 export { validateExpression, validateOptions } from './validation';
 export { mergeConfig, createFilterConfig } from './config';
-
-export default filter;

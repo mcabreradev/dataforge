@@ -16,4 +16,9 @@ export default defineConfig({
       js: format === 'cjs' ? '.cjs' : '.js',
     };
   },
+  esbuildOptions(options) {
+    options.footer = {
+      js: 'module.exports = Object.assign(exports.default || {}, exports);',
+    };
+  },
 });
