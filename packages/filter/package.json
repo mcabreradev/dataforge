@@ -40,7 +40,6 @@
     "check:watch": "pnpm run typecheck:watch",
     "clean": "pnpm run build:clean",
     "validate": "pnpm run check && pnpm run build",
-    "prepare": "husky",
     "prepublish": "pnpm run lint && pnpm run typecheck",
     "version": "pnpm run format && git add -A src",
     "publish:major": "pnpm version major && pnpm publish",
