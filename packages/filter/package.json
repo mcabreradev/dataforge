@@ -90,7 +90,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mcabreradev/dataforge.git",
+    "url": "git+ssh+https://github.com/mcabreradev/dataforge.git",
     "directory": "packages/filter"
   },
   "bugs": {

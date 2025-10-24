@@ -29,9 +29,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "clean": "turbo run clean && rm -rf docs/.vitepress/dist",
-    "semantic-release": "multi-semantic-release",
-    "semantic-release:dry-run": "multi-semantic-release --dry-run",
-    "semantic-release:beta": "multi-semantic-release --branches beta",
+    "semantic-release": "semantic-release",
+    "semantic-release:dry-run": "semantic-release --dry-run",
+    "semantic-release:beta": "semantic-release --branches beta",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -55,7 +55,6 @@
     "happy-dom": "^20.0.8",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
-    "multi-semantic-release": "^3.0.2",
     "prettier": "^3.6.2",
     "semantic-release": "^25.0.1",
     "tsup": "^8.5.0",
@@ -76,5 +75,11 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "pnpm": {
+    "overrides": {
+      "semver-diff": "^4.0.0",
+      "source-map": "^0.7.4"
+    }
   }
 }
