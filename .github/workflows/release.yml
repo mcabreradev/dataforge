@@ -1,4 +1,4 @@
-name: Release Pipeline
+name: Release
 
 on:
   push:
@@ -16,6 +16,7 @@ jobs:
       issues: write
       pull-requests: write
       packages: write
+      id-token: write
 
     steps:
       - name: Checkout
